@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>blog</title>
+</head>
+<body>
+    <h1>blog</h1>
+    blog - 전체글 리스트입니다.
+    post - 여러개의 글 리스트
+
+    {% for post in posts %}
+        <h1> {{ post }}</h1>
+
+
+        <h1>제목: {{ post.title}}</h1>
+        <h1>내용: {{ post.content}}</h1>
+        <h1>생성일: {{ post.created_date}}</h1>
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 
+#http://127.0.0.1:8000/blog/
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path(route:'blog/',담당하는 곳),
+    #path(route:'single_pages/',담당하는곳),
+    path('', include('single_pages.urls')),
+    path('blog/', include('blog.urls')),
+
+
+
 ]
