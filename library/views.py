@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from library.models import Book
 
-def index(request):
+def book(request):
     #DB 작업 query - select * from post
-    boooks = Book.objects.all()
-    return render(request,'library/index.html', context={'books':books})
+    books = Book.objects.all()
+    return render(request,'library/lib.html', context={'books':books})
