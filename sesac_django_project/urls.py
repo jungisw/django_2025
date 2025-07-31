@@ -26,6 +26,7 @@ urlpatterns = [
     #path(route:'single_pages/',담당하는곳),
     path('', include('single_pages.urls')),
     path('blog/', include('blog.urls')),
+    path('library/', include('library.urls')),
 
 
 
