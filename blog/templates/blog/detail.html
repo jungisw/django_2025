@@ -92,7 +92,16 @@
                         <!-- Post header-->
 
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                        <figure class="mb-4">
+                            {% if post.uploaded_image %}
+                                <img class="img-fluid rounded"
+                                 src="{{ post.uploaded_image.url }}" alt="..." />
+                            {% else %}
+                                <img class="img-fluid rounded"
+                                     src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." />
+                            {% endif %}
+
+                        </figure>
                         <!-- Post content-->
                         <!-- Post meta content-->
                                     <div class="text-muted fst-italic mb-2">Posted on {{ post.created_date}}</div>
@@ -126,7 +135,7 @@
                                         </div>
                                         <!-- Child comment 2-->
                                         <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="{{ post.uploaded_image.url}}" alt="..." /></div>
                                             <div class="ms-3">
                                                 <div class="fw-bold">Commenter Name</div>
                                                 When you put money directly to a problem, it makes a good headline.
