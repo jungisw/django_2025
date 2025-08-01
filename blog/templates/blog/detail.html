@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Welcome to Blog Post!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+
                 </div>
             </div>
         </header>
@@ -33,10 +33,14 @@
                         </figure>
                         <!-- Post content-->
                         <!-- Post meta content-->
-                                    <div class="text-muted fst-italic mb-2">Posted on {{ post.created_date}}</div>
+                                    <div class="text-muted fst-italic mb-2">Posted on {{ post.created_date}} by {{ post.author }}</div>
                                     <!-- Post categories-->
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                                    {% if post.category %}
+                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ post.category.name}}</a>
+                                    {% else%}
+                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">미분류</a>
+                                    {% endif %}
+
                                     {% if post.uploaded_file %}
                                         <a href={{ post.uploaded_file.url }}><button>Download</button></a>
                                     {% endif %}
