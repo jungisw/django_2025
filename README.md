@@ -24,12 +24,12 @@ django 기반 블로그 제작 프로젝트입니다.
 
 ## 🚀 실행 방법
 
-```bash
+```
 git clone https://github.com/your-id/project-name.git
 cd project-name
 python manage.py runserver
 
-```markdown
+```
 
 ## 주요 화면
 
