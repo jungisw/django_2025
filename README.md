@@ -29,12 +29,32 @@ git clone https://github.com/your-id/project-name.git
 cd project-name
 python manage.py runserver
 
-## 📸 화면 예시
+---
+
+# 2. blog 앱 README (`blog/README.md`)
+
+```markdown
+
+# blog 앱
+
+게시글 작성, 조회, 카테고리 분류 기능을 담당합니다.
+
+## 주요 화면
 
 ### 🏠 메인 화면
-![메인]
+- 전체 글 목록을 보여줍니다.
+![blog 메인](../docs/images/blog_main.png)
+
+### 🗂️ 카테고리 목록 화면
+- 등록된 카테고리 리스트입니다.
+![blog 카테고리 목록](../docs/images/blog_category_list.png)
+
+### 📚 카테고리별 글 목록 화면
+- 선택한 카테고리에 속한 글만 보여줍니다.
+![blog 카테고리 상세](../docs/images/blog_category_detail.png)
 
 ### 📝 글 상세 화면
-![상세]
+- 글의 제목, 내용, 작성일을 확인할 수 있습니다.
+![blog 글 상세](../docs/images/blog_detail.png)
 
 
