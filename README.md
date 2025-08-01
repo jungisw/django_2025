@@ -31,14 +31,6 @@ python manage.py runserver
 
 ---
 
-# 2. blog 앱 README (`blog/README.md`)
-
-```markdown
-
-# blog 앱
-
-게시글 작성, 조회, 카테고리 분류 기능을 담당합니다.
-
 ## 주요 화면
 
 ### 🏠 메인 화면
@@ -46,7 +38,7 @@ python manage.py runserver
 ![blog 메인](../docs/images/blog_main.png)
 
 ### 🗂️ 카테고리 목록 화면
-- 등록된 카테고리 리스트입니다.
+- 등록된 카테고리 리스트를 보여줍니다.
 ![blog 카테고리 목록](../docs/images/blog_category_list.png)
 
 ### 📚 카테고리별 글 목록 화면
@@ -56,5 +48,3 @@ python manage.py runserver
 ### 📝 글 상세 화면
 - 글의 제목, 내용, 작성일을 확인할 수 있습니다.
 ![blog 글 상세](../docs/images/blog_detail.png)
-
-
