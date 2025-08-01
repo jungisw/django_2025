@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기페이지</title>
+
+
+
+</head>
+<body>
+
+    <form method="post" enctype="multipart/form-data"  >
+        {% csrf_token %} <!-- -->
+        {{ postform }}
+       <!-- <label for id="111">제목:</label>
+        <input type="text" id="111">
+        <label for id="content">내용:</label>
+        <input type="text" id="content">-->
+        <input type="submit" >
+
+
+
+
+    </form>
+
+
+
+</body>
+</html>
