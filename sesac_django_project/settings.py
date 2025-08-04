@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'single_pages',
     'blog',
     'library',
+    'django_extensions',
 
 ]
 

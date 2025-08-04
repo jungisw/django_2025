@@ -21,9 +21,19 @@ class Post(models.Model):
     uploaded_image = models.ImageField(upload_to='images/', blank=True)
     uploaded_file = models.FileField(upload_to='files/', blank=True)
     def __str__(self):
-        return (f'게시글제목:{self.title}-by {self.author} - 게시글 내용 -{self.content} - 생성시간 - '
+        return (f'게시글제목:{self.uploaded_image} - {self.title}-by {self.author} - 게시글 내용 -{self.content} - 생성시간 - '
                 f'{self.created_date} - 수정시간 - {self.updated_date} - 수정파일 - {self.uploaded_file}'
                 f'- category - {self.category}')
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
 
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True, null=True)
+    updated_date = models.DateTimeField(auto_now=True, null=True)
+
+    def __str__(self):
+        return f'{self.author.username}-{self.content} in {self.post.title}'
