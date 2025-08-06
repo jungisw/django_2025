@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    example 첫 페이지
+    <script>
+    // CSRF 토큰 가져오기 함수
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    $(document).ready(function () {
+
+        // 전체 글 가져오기
+        function getPostlist() {
+            $.ajax({
+                url: '{% url "blogAPI" %}',
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+
+                    let list = data;
+                    $(list).each(function () {
+                        let str = '';
+                        str += '<hr>';
+                        str += '<div>';
+                        str += this.title + '&nbsp;&nbsp;&nbsp;';
+                        str += this.author + '=====';
+                        str += this.content + '=====';
+                        str += '</div>';
+                        $('#postList').append(str);
+                    });
+
+                    alert("전체글 성공");
+                },
+                error: function () {
+                    console.log("데이터 가져오기 실패");
+                    alert("전체글 실패");
+                }
+            });
+        }
+
+        // 새 글 작성 버튼 클릭 시 실행
+        $('#postAddbtn').click(function () {
+            const post = {
+                title: $('#title').val(),
+                author: $('#author').val(),
+                content: $('#content').val()
+            };
+
+
+            $.ajax({
+                url: "{% url 'blogAPI' %}",
+                type: "POST",
+                contentType: "application/json",  // ✅ 오타 수정: contentType
+                data: JSON.stringify(post),
+                headers: { 'X-CSRFToken': csrftoken },
+                success: function () {
+                    console.log(data)
+                    alert('새글 성공');
+                    $('#postList').empty(); // 기존 목록 비우고
+                    getPostlist(); // 새로 목록 불러오기
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr.responseJSON))
+                    alert('새글 작성 실패');
+                }
+            });
+        });
+
+        // 페이지 로드 시 전체 글 가져오기 실행
+        getPostlist();
+    });
+</script>
+
+
+
+    <h3>새글작성</h3>
+    작성화면, 버튼
+    <form>
+        <input type="text" id="title" placeholder="title" required><br>
+        <input type="text" id="author" placeholder="author" required><br>
+        <input type="text" id="content" placeholder="content" required><br>
+        <input type="submit" id="postAddbtn">
+
+    </form>
+
+    <div id="result">
+
+    </div>
+
+
+
+    <h3>글 목록입니다.</h3>
+    <div id="postList">  </div>
+
+</body>
+</html>

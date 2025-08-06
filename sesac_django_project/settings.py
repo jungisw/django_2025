@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'blog',
     'library',
     'django_extensions',
+    'example',
+    'rest_framework',
+
 
 ]
 

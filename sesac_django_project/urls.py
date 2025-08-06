@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('single_pages.urls')),
     path('blog/', include('blog.urls')),
     path('library/', include('library.urls')),
+    path('example/',include('example.urls')),
 
 
 
